@@ -1,3 +1,7 @@
 .pad-left { 
     margin-left: 10px; 
 }
+
+.thumbnail {
+    min-height: 210px;
+}
