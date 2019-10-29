@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core'
 
 export class EventThumbnailComponent {
     @Input() event: any
+
+    getStartTimeClass() {
+        const isEarlyStart = this.event && this.event.time === '8:00am'
+        return {green: isEarlyStart, bold: isEarlyStart}
+    }
 }
