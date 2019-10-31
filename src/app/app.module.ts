@@ -33,10 +33,10 @@ import { EventListResolver } from './events/events-list.resolver.service';
   ],
   // Services
   providers: [
-    EventService, 
-    ToastrService, 
+    EventService,
+    ToastrService,
     EventRouteActivator,
-    { 
+    {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     },
