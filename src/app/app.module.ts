@@ -16,15 +16,16 @@ import {
 
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
+import { Toastr, TOASTR_TOKEN } from './common';
 
-declare let toastr:Toastr
+let toastr: Toastr = window['toastr'];
+let jQuery: Object = window['$'];
 
 @NgModule({
   // Other Modules

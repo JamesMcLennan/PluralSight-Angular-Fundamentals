@@ -6,7 +6,7 @@ import { IEvent, ISession } from './event.model';
 export class EventService {
     getEvents():Observable<IEvent[]> {
         let subject = new Subject<IEvent[]>();
-        setTimeout(() => {subject.next(EVENTS); subject.complete(); }, 
+        setTimeout(() => {subject.next(EVENTS); subject.complete(); },
         100);
       return subject;
     }
@@ -31,19 +31,15 @@ export class EventService {
       var results: ISession[] = [];
 
       EVENTS.forEach(event => {
-        var matchingSessions = event.sessions.filter(session =>  {
-          
-          console.log(session.name);
-          console.log(term);
-          console.log(session.name.toLocaleLowerCase().includes(term));
-          return session.name.toLocaleLowerCase().includes(term);
-        });
-          
+        var matchingSessions = event.sessions.filter(session =>
+          session.name.toLocaleLowerCase().includes(term)
+        );
+
           matchingSessions = matchingSessions.map((session:any) => {
             session.eventId = event.id;
             return session;
           });
-          
+
           results = results.concat(matchingSessions);
       });
       var emitter = new EventEmitter(true);
