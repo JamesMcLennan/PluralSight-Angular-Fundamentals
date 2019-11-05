@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Inject } from "@angular/core";
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ISession, restrictedWords } from '../../shared';
+import { TOASTR_TOKEN, Toastr } from 'src/app/common/toastr.service';
 
 @Component({
     selector: 'create-session',
@@ -18,6 +19,10 @@ export class CreateSessionComponent implements OnInit {
     duration: FormControl
     level: FormControl
     abstract: FormControl
+
+    constructor(@Inject(TOASTR_TOKEN) private toastr: Toastr) {
+
+    }
 
     ngOnInit() {
         this.name = new FormControl('', Validators.required)
@@ -46,6 +51,7 @@ export class CreateSessionComponent implements OnInit {
             abstract: formValues.abstract,
             voters: []
         }
+        this.toastr.success("Session Added!")
         this.saveNewSession.emit(session)
     }
 
