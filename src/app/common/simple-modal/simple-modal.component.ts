@@ -10,11 +10,15 @@ import { JQ_TOKEN } from '../jquery.service';
 export class SimpleModalComponent {
     @Input() title: string;
     @Input() elementId: string;
+    @Input() closeOnBodyClick: string;
+
     @ViewChild('modalContainer') containerElement: ElementRef;
 
     constructor(@Inject(JQ_TOKEN) private $:any) {}
 
     closeModal() {
-        this.$(this.containerElement.nativeElement).modal('hide');
+        if(this.closeOnBodyClick.toLocaleLowerCase() === "true") {
+            this.$(this.containerElement.nativeElement).modal('hide');
+        }
     }
 }
