@@ -7,8 +7,10 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
+  //Refer to comment in EventRouteActivator 
+  //EventRouteActivator,
   EventListResolver,
+  EventResolver,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe
@@ -58,13 +60,14 @@ let jQuery: Object = window['$'];
     EventService,
     { provide: JQ_TOKEN, useValue: jQuery },
     { provide: TOASTR_TOKEN, useValue: toastr },
-    EventRouteActivator,
+    //EventRouteActivator,
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     },
-    EventListResolver
+    EventListResolver,
+    EventResolver
   ],
   bootstrap: [EventsAppComponent]
 })

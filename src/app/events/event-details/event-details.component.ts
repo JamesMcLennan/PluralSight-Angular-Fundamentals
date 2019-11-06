@@ -21,10 +21,10 @@ export class EventDetailsComponent {
   ngOnInit() {
     // Subscribe to the params to check for re-routes to the same component.
     // When the route to self is called, we need to reset all component states to original.
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
-      this.resetState();
-    })
+    this.route.data.forEach((data) => {
+        this.event = data['event'];
+        this.resetState();
+    });
   }
 
   addSession() {
