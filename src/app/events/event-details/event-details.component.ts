@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {EventService} from '../shared/events.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import { IEvent, ISession } from '../shared';
 
 @Component({
@@ -19,7 +19,12 @@ export class EventDetailsComponent {
   }
 
   ngOnInit() {
-    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+    // Subscribe to the params to check for re-routes to the same component.
+    // When the route to self is called, we need to reset all component states to original.
+    this.route.params.forEach((params: Params) => {
+      this.event = this.eventService.getEvent(+params['id']);
+      this.resetState();
+    })
   }
 
   addSession() {
@@ -36,5 +41,9 @@ export class EventDetailsComponent {
 
   cancelAddSession() {
     this.addMode = false
+  }
+
+  resetState() {
+    this.addMode = false;
   }
 }
