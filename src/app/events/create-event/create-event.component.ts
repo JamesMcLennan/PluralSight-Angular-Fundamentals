@@ -19,7 +19,6 @@ export class CreateEventComponent {
     }
 
     saveEvent(formValues: IEvent) {
-        console.log(formValues);
         this.eventService.saveEvent(formValues).subscribe((result: IEvent) => {
             this.isDirty = false
             this.toastr.success(result.name + " has been created!")
