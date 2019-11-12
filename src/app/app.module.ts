@@ -7,8 +7,10 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
+  //Refer to comment in EventRouteActivator 
+  //EventRouteActivator,
   EventListResolver,
+  EventResolver,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
@@ -26,6 +28,7 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 import { Toastr, TOASTR_TOKEN, JQ_TOKEN, SimpleModalComponent, ModalTriggerDirective } from './common';
+import { HttpClientModule } from '@angular/common/http';
 
 let toastr: Toastr = window['toastr'];
 let jQuery: Object = window['$'];
@@ -36,7 +39,8 @@ let jQuery: Object = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   // Component, Pipe or Directive
   declarations: [
@@ -61,9 +65,10 @@ let jQuery: Object = window['$'];
     EventService,
     { provide: JQ_TOKEN, useValue: jQuery },
     { provide: TOASTR_TOKEN, useValue: toastr },
-    EventRouteActivator,
+    //EventRouteActivator,
     AuthService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    EventResolver,
     EventListResolver,
     VoterService
   ],
