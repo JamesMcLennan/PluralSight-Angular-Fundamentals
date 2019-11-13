@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/user/auth.service';
 import { VoterService } from '../voter.service';
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'session-list',
     templateUrl: './session-list.component.html',
     styleUrls: ['./session-list.component.css']
