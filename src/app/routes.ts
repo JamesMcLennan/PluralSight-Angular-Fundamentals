@@ -2,11 +2,11 @@ import {
   EventsListComponent,
   EventDetailsComponent,
   CreateEventComponent,
-  //EventRouteActivator,
+  // EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   EventResolver
-} from './events/index'
+} from './events/index';
 import {Routes} from '@angular/router';
 import { Error404Component } from './errors/404.component';
 

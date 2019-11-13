@@ -1,4 +1,4 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 import { Validator, FormGroup, NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
@@ -10,11 +10,11 @@ import { Validator, FormGroup, NG_VALIDATORS } from '@angular/forms';
 
 export class LocationValidator implements Validator {
     validate(formGroup: FormGroup): { [key: string]: any } {
-        let addressControl = formGroup.controls['address'];
-        let cityControl = formGroup.controls['city'];
-        let countryControl = formGroup.controls['country'];
+        const addressControl = formGroup.controls['address'];
+        const cityControl = formGroup.controls['city'];
+        const countryControl = formGroup.controls['country'];
         // Validator is on a sibling of the OnlineURL so we need to go to the root FormGroup to access this group.
-        let onlineUrlControl = (<FormGroup>formGroup.root).controls['onlineUrl'];
+        const onlineUrlControl = (<FormGroup>formGroup.root).controls['onlineUrl'];
 
         if ((addressControl && addressControl.value
             && cityControl && cityControl.value
@@ -22,7 +22,7 @@ export class LocationValidator implements Validator {
             || (onlineUrlControl && onlineUrlControl.value)) {
             return null;
         } else {
-            return { validateLocation: false }
+            return { validateLocation: false };
         }
     }
 }

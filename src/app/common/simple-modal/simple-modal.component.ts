@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, Inject } from "@angular/core";
+import { Component, Input, ViewChild, ElementRef, Inject } from '@angular/core';
 import { JQ_TOKEN } from '../jquery.service';
 
 @Component({
@@ -14,10 +14,10 @@ export class SimpleModalComponent {
 
     @ViewChild('modalContainer') containerElement: ElementRef;
 
-    constructor(@Inject(JQ_TOKEN) private $:any) {}
+    constructor(@Inject(JQ_TOKEN) private $: any) {}
 
     closeModal() {
-        if(this.closeOnBodyClick.toLocaleLowerCase() === "true") {
+        if (this.closeOnBodyClick.toLocaleLowerCase() === 'true') {
             this.$(this.containerElement.nativeElement).modal('hide');
         }
     }

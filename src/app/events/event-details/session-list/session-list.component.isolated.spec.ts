@@ -1,4 +1,4 @@
-import { SessionListComponent } from "./session-list.component"
+import { SessionListComponent } from './session-list.component';
 import { ISession } from '../../shared';
 
 describe('SessionListComponent', () => {
@@ -43,4 +43,4 @@ describe('SessionListComponent', () => {
             expect(component.visibleSessions[2].name).toBe('session 3');
         });
     });
-})
+});

@@ -22,7 +22,7 @@ export class EventService {
   }
 
   saveEvent(event: IEvent) {
-    let options = { headers: new HttpHeaders({'Content-Type': 'application.json'})}
+    const options = { headers: new HttpHeaders({'Content-Type': 'application.json'})};
     return this.http.post<IEvent>('/api/events', event, options)
       .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
@@ -36,7 +36,7 @@ export class EventService {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
-    }
+    };
   }
 }
 

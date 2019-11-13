@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core'
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { IEvent, EventService } from '../shared';
 import { TOASTR_TOKEN, Toastr } from 'src/app/common/toastr.service';
@@ -9,25 +9,25 @@ import { TOASTR_TOKEN, Toastr } from 'src/app/common/toastr.service';
 })
 
 export class CreateEventComponent {
-    newEvent:IEvent
-    isDirty:boolean = true;
+    newEvent: IEvent;
+    isDirty = true;
 
-    constructor(private router: Router, 
+    constructor(private router: Router,
         private eventService: EventService,
         @Inject(TOASTR_TOKEN) private toastr: Toastr) {
-        
+
     }
 
     saveEvent(formValues: IEvent) {
         this.eventService.saveEvent(formValues).subscribe((result: IEvent) => {
-            this.isDirty = false
-            this.toastr.success(result.name + " has been created!")
-            this.router.navigate(['/events'])
+            this.isDirty = false;
+            this.toastr.success(result.name + ' has been created!');
+            this.router.navigate(['/events']);
         });
-        
+
     }
 
     cancel() {
-        this.router.navigate(['/events'])
+        this.router.navigate(['/events']);
     }
 }

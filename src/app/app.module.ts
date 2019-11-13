@@ -7,8 +7,8 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  //Refer to comment in EventRouteActivator 
-  //EventRouteActivator,
+  // Refer to comment in EventRouteActivator
+  // EventRouteActivator,
   EventListResolver,
   EventResolver,
   CreateSessionComponent,
@@ -17,7 +17,7 @@ import {
   UpvoteComponent,
   VoterService,
   LocationValidator
-} from './events/index'
+} from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
@@ -30,8 +30,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-
 import { Toastr, TOASTR_TOKEN, JQ_TOKEN, SimpleModalComponent, ModalTriggerDirective } from './common';
 import { HttpClientModule } from '@angular/common/http';
 
-let toastr: Toastr = window['toastr'];
-let jQuery: Object = window['$'];
+const toastr: Toastr = window['toastr'];
+const jQuery: Object = window['$'];
 
 @NgModule({
   // Other Modules
@@ -65,7 +65,7 @@ let jQuery: Object = window['$'];
     EventService,
     { provide: JQ_TOKEN, useValue: jQuery },
     { provide: TOASTR_TOKEN, useValue: toastr },
-    //EventRouteActivator,
+    // EventRouteActivator,
     AuthService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
     EventResolver,
@@ -77,8 +77,8 @@ let jQuery: Object = window['$'];
 export class AppModule { }
 
 export function checkDirtyState(component: CreateEventComponent) {
-  if(component.isDirty) {
-    return window.confirm('You have not saved this event, are you sure you wish to cancel?')
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event, are you sure you wish to cancel?');
   }
-  return true
+  return true;
 }

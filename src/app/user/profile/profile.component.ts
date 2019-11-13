@@ -10,11 +10,11 @@ import { Toastr, TOASTR_TOKEN } from 'src/app/common/toastr.service';
 })
 
 export class ProfileComponent implements OnInit {
-  profileForm: FormGroup
-  private firstName: FormControl
-  private lastName: FormControl
+  profileForm: FormGroup;
+  private firstName: FormControl;
+  private lastName: FormControl;
 
-  constructor(private authService: AuthService, 
+  constructor(private authService: AuthService,
     private router: Router,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {
 
@@ -22,20 +22,20 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.firstName = new FormControl
-      (this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
+      (this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
     this.lastName = new FormControl
-      (this.authService.currentUser.lastName, Validators.required)
+      (this.authService.currentUser.lastName, Validators.required);
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName
-    })
+    });
   }
 
   saveProfile(formValues) {
-    if(this.profileForm.valid) {
+    if (this.profileForm.valid) {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
       .subscribe(() => {
-        this.toastr.success("Profile Saved")
+        this.toastr.success('Profile Saved');
       });
     }
   }
@@ -43,19 +43,19 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['/user/login']);
-    })
+    });
   }
 
   cancel() {
-    this.router.navigate(['events'])
+    this.router.navigate(['events']);
   }
 
   validateFirstName() {
-    return this.firstName.valid && this.firstName.untouched
+    return this.firstName.valid && this.firstName.untouched;
   }
 
   validateLastName() {
-    return this.lastName.valid && this.lastName.untouched
+    return this.lastName.valid && this.lastName.untouched;
   }
 
 }

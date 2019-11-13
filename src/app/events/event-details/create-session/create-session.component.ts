@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Inject } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ISession, restrictedWords } from '../../shared';
 import { TOASTR_TOKEN, Toastr } from 'src/app/common/toastr.service';
@@ -10,27 +10,27 @@ import { TOASTR_TOKEN, Toastr } from 'src/app/common/toastr.service';
 })
 
 export class CreateSessionComponent implements OnInit {
-    @Output() saveNewSession = new EventEmitter()
-    @Output() cancelAddSession = new EventEmitter()
+    @Output() saveNewSession = new EventEmitter();
+    @Output() cancelAddSession = new EventEmitter();
 
-    newSessionForm: FormGroup
-    name: FormControl
-    presenter: FormControl
-    duration: FormControl
-    level: FormControl
-    abstract: FormControl
+    newSessionForm: FormGroup;
+    name: FormControl;
+    presenter: FormControl;
+    duration: FormControl;
+    level: FormControl;
+    abstract: FormControl;
 
     constructor(@Inject(TOASTR_TOKEN) private toastr: Toastr) {
 
     }
 
     ngOnInit() {
-        this.name = new FormControl('', Validators.required)
-        this.presenter = new FormControl('', Validators.required)
-        this.duration = new FormControl('', Validators.required)
-        this.level = new FormControl('', Validators.required)
+        this.name = new FormControl('', Validators.required);
+        this.presenter = new FormControl('', Validators.required);
+        this.duration = new FormControl('', Validators.required);
+        this.level = new FormControl('', Validators.required);
         this.abstract = new FormControl('', [Validators.required,
-            Validators.maxLength(400), restrictedWords(['foo', 'bar'])])
+            Validators.maxLength(400), restrictedWords(['foo', 'bar'])]);
 
         this.newSessionForm = new FormGroup({
             name: this.name,
@@ -38,11 +38,11 @@ export class CreateSessionComponent implements OnInit {
             duration: this.duration,
             level: this.level,
             abstract: this.abstract
-        })
+        });
     }
 
     saveSession(formValues) {
-        let session: ISession = {
+        const session: ISession = {
             id: undefined,
             name: formValues.name,
             duration: +formValues.duration,
@@ -50,12 +50,12 @@ export class CreateSessionComponent implements OnInit {
             presenter: formValues.presenter,
             abstract: formValues.abstract,
             voters: []
-        }
-        this.toastr.success("Session Added!")
-        this.saveNewSession.emit(session)
+        };
+        this.toastr.success('Session Added!');
+        this.saveNewSession.emit(session);
     }
 
     cancel() {
-        this.cancelAddSession.emit()
+        this.cancelAddSession.emit();
     }
 }

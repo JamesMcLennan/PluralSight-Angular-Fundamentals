@@ -15,12 +15,12 @@ describe('SessionListComponent', () => {
         debugEl: DebugElement;
 
     beforeEach(async(() => {
-        let mockAuthService = {
+        const mockAuthService = {
             isAuthenticated: () => true,
             currentUser: { userName: 'Joe' }
         };
 
-        let mockVoterService = {
+        const mockVoterService = {
             userHasVoted: () => true
         };
 
@@ -65,7 +65,7 @@ describe('SessionListComponent', () => {
             component.ngOnChanges();
             fixture.detectChanges();
 
-            //expect(element.querySelector('[well-title]').textContent).toContain('Session 1');
+            // expect(element.querySelector('[well-title]').textContent).toContain('Session 1');
             expect(debugEl.query(By.css('[well-title]')).nativeElement.textContent).toContain('Session 1');
         });
     });
